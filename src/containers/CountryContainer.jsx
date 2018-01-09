@@ -1,6 +1,6 @@
 import React from 'react';
 import CountryHeader from './CountryHeader';
-import FlagContainer from './FlagContainer';
+import FlagContainer from './FlagContainer.jsx';
 import ResultContainer from './ResultContainer';
 
 class CountryContainer extends React.Component {
@@ -13,7 +13,7 @@ class CountryContainer extends React.Component {
       randomNumber: 0,
       selectedCountry: null
     };
-    this.handleSelectedCountry = this.handleSelectedCountry.bind(this);
+
     this.getRandomIndex = this.getRandomIndex.bind(this);
     // this.getRandomCountry = this.getRandomCountry.bind(this);
     this.buildCountryArray = this.buildCountryArray.bind(this);
@@ -52,8 +52,8 @@ class CountryContainer extends React.Component {
     request.send();
   }
 
-  handleSelectedCountry(index){
-    this.setState({selectedCountry: index});
+  handleClick(event){
+
   }
 
   render(){
@@ -65,7 +65,9 @@ class CountryContainer extends React.Component {
       <div>
         <CountryHeader country={guessCountry}/>
         <FlagContainer correct={guessCountry} countries={this.state.gameCountries}/>
-      
+        <button onClick={this.buildCountryArray}>Play again?</button>
+
+
       </div>
     );
   }
