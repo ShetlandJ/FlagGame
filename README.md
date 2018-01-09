@@ -4,4 +4,4 @@ This project was part of a pair-programming exercise with Findsay as part of my 
 
 # Screenshot
 
-<img src="https://i.imgur.com/HxFjBxN.png" alt="flag game screenshot" width="500px">
+<img src="https://i.imgur.com/HxFjBxN.png" alt="flag game screenshot" width="650px">
