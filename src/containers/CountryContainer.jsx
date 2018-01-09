@@ -8,6 +8,7 @@ class CountryContainer extends React.Component {
     super(props);
     this.state = {
       countries:[],
+      gameCountries: [],
       randomCountry: '',
       randomNumber: 0,
       selectedCountry: null
@@ -21,6 +22,20 @@ class CountryContainer extends React.Component {
     const max = 249;
     const rand = min + Math.random() * (max - min);
     this.setState({ randomNumber: this.state.randomNumber + Math.round(rand) });
+    return this.state.randomNumber
+  }
+
+  getRandomCountry(index){
+    const guessCountry = this.state.countries[this.state.randomNumber];
+  }
+
+  buildCountryArray(){
+    for (var i=0; i < 3; i++) {
+      let randNum = this.getRandomIndex();
+      this.getRandomCountry(randNum);
+      
+    }
+
   }
 
   componentDidMount(){
@@ -42,18 +57,14 @@ class CountryContainer extends React.Component {
     this.setState({selectedCountry: index});
   }
 
-
   render(){
     const guessCountry = this.state.countries[this.state.randomNumber];
+    console.log(guessCountry);
 
-    // this.setState({randomCountry: guessCountry})
-    console.log(this.state)
-    // console.log(guessCountry.name);
-    // console.log(this.state.randomNumber);
     return (
       <div>
         <CountryHeader country={guessCountry}/>
-        <FlagContainer/>
+        <FlagContainer country={}/>
         <ResultContainer/>
       </div>
     );

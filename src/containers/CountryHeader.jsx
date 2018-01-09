@@ -2,9 +2,13 @@ import React from 'react';
 
 class CountryHeader extends React.Component {
   render() {
-    return(
-      <div>hello world</div>
-    )
+    if (!this.props.country) {
+      return null;
+    } else {
+      return(
+        <div>{this.props.country.name}</div>
+      )
+    }
   }
 }
 

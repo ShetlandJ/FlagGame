@@ -6,9 +6,6 @@ class FlagContainer extends React.Component {
     return(
       <div>
         <Flag />
-        <Flag />
-        <Flag />
-        <Flag />
       </div>
     )
   }
