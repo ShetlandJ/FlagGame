@@ -19,9 +19,7 @@ class CountryContainer extends React.Component {
     this.buildCountryArray = this.buildCountryArray.bind(this);
   }
 
-  getRandomIndex(){
-    const min = 0;
-    const max = 249;
+  getRandomIndex(min, max){
     const rand = min + Math.random() * (max - min);
     const rounded = Math.round(rand)
     return rounded
@@ -30,7 +28,7 @@ class CountryContainer extends React.Component {
   buildCountryArray(index){
     let gameArray = [];
     for (var i=0; i < 4; i++) {
-      let roundedNum = this.getRandomIndex()
+      let roundedNum = this.getRandomIndex(0, 249)
       let countryObj = this.state.countries[roundedNum];
       console.log(countryObj);
       gameArray.push(countryObj)
@@ -59,15 +57,15 @@ class CountryContainer extends React.Component {
   }
 
   render(){
+    let randomNumber = this.getRandomIndex(0, 3)
 
-    const guessCountry = this.state.countries[this.state.randomNumber]
-    // const gameCountries = this.state.gameCountries;
+    const guessCountry = this.state.gameCountries[randomNumber]
 
     return (
       <div>
         <CountryHeader country={guessCountry}/>
-        <FlagContainer countries={this.state.gameCountries}/>
-        <ResultContainer/>
+        <FlagContainer correct={guessCountry} countries={this.state.gameCountries}/>
+      
       </div>
     );
   }
