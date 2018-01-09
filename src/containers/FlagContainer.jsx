@@ -12,12 +12,10 @@ constructor(props){
 }
 
   handleClick(event) {
-    console.log(event.target.src);
-    console.log(this.props.correct.flag);
     if (event.target.src === this.props.correct.flag) {
-      // TODO: Display Correct message
-      console.log("hello");
       this.setState({guess: "Correct"})
+    } else {
+      this.setState({guess: "Try again!"})
     }
   }
 

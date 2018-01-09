@@ -8,7 +8,7 @@ class CountryHeader extends React.Component {
       return(
         <div className="header">
           <h1>
-          What is the flag of {this.props.country.name}
+          What is the flag of {this.props.country.name}?
         </h1>
         </div>
       )

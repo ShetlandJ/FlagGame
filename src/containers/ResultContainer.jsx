@@ -7,10 +7,17 @@ class ResultContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props.visibility);
+
+    let generatedClass = "";
+    if (this.props.result === "Correct") {
+      generatedClass = "correct"
+    } else {
+      generatedClass = "tryAgain"
+    }
+
     return(
-      <div>
-        <p>{this.props.result}</p>
+      <div className="results">
+        <h1 className={generatedClass}>{this.props.result}</h1>
       </div>
     )
   }

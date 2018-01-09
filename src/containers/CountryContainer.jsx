@@ -30,7 +30,6 @@ class CountryContainer extends React.Component {
     for (var i=0; i < 4; i++) {
       let roundedNum = this.getRandomIndex(0, 249)
       let countryObj = this.state.countries[roundedNum];
-      console.log(countryObj);
       gameArray.push(countryObj)
     }
     this.setState({gameCountries: gameArray})
@@ -63,14 +62,19 @@ class CountryContainer extends React.Component {
 
     return (
       <div>
-        <CountryHeader country={guessCountry}/>
-        <FlagContainer correct={guessCountry} countries={this.state.gameCountries}/>
-        <button onClick={this.buildCountryArray}>Play again?</button>
+        <div>
+          <CountryHeader country={guessCountry}/>
+          <FlagContainer correct={guessCountry} countries={this.state.gameCountries}/>
+        </div>
+
+        <div className="results">
+          <button onClick={this.buildCountryArray}>New Round</button>
+        </div>
 
 
       </div>
-    );
-  }
+  );
+}
 }
 
 export default CountryContainer;
