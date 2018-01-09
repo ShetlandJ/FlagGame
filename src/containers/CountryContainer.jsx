@@ -8,10 +8,19 @@ class CountryContainer extends React.Component {
     super(props);
     this.state = {
       countries:[],
+      randomCountry: '',
+      randomNumber: 0,
       selectedCountry: null
     };
-
     this.handleSelectedCountry = this.handleSelectedCountry.bind(this);
+    this.getRandomIndex = this.getRandomIndex.bind(this);
+  }
+
+  getRandomIndex(){
+    const min = 0;
+    const max = 249;
+    const rand = min + Math.random() * (max - min);
+    this.setState({ randomNumber: this.state.randomNumber + Math.round(rand) });
   }
 
   componentDidMount(){
@@ -26,17 +35,24 @@ class CountryContainer extends React.Component {
       }
     });
     request.send();
+    this.getRandomIndex();
   }
 
   handleSelectedCountry(index){
     this.setState({selectedCountry: index});
   }
 
+
   render(){
-    const country = this.state.countries[this.state.selectedCountry];
+    const guessCountry = this.state.countries[this.state.randomNumber];
+
+    // this.setState({randomCountry: guessCountry})
+    console.log(this.state)
+    // console.log(guessCountry.name);
+    // console.log(this.state.randomNumber);
     return (
       <div>
-        <CountryHeader/>
+        <CountryHeader country={guessCountry}/>
         <FlagContainer/>
         <ResultContainer/>
       </div>
