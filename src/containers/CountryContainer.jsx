@@ -15,27 +15,32 @@ class CountryContainer extends React.Component {
     };
     this.handleSelectedCountry = this.handleSelectedCountry.bind(this);
     this.getRandomIndex = this.getRandomIndex.bind(this);
+    this.getRandomCountry = this.getRandomCountry.bind(this);
+    this.buildCountryArray = this.buildCountryArray.bind(this);
   }
 
   getRandomIndex(){
     const min = 0;
     const max = 249;
     const rand = min + Math.random() * (max - min);
-    this.setState({ randomNumber: this.state.randomNumber + Math.round(rand) });
-    return this.state.randomNumber
+    const rounded = Math.round(rand)
+    this.setState({ randomNumber: rounded });
   }
 
   getRandomCountry(index){
-    const guessCountry = this.state.countries[this.state.randomNumber];
+    const guessCountry = this.state.countries[index];
+    console.log(guessCountry);
+    return guessCountry
   }
 
-  buildCountryArray(){
-    for (var i=0; i < 3; i++) {
-      let randNum = this.getRandomIndex();
-      this.getRandomCountry(randNum);
-      
+  buildCountryArray(index){
+    let gameArray = [];
+    for (var i=0; i < 4; i++) {
+      this.getRandomIndex();
+      let countryObj = this.getRandomCountry(index);
+      gameArray.push(countryObj)
     }
-
+    this.setState({gameCountries: gameArray})
   }
 
   componentDidMount(){
@@ -50,7 +55,7 @@ class CountryContainer extends React.Component {
       }
     });
     request.send();
-    this.getRandomIndex();
+
   }
 
   handleSelectedCountry(index){
@@ -58,13 +63,17 @@ class CountryContainer extends React.Component {
   }
 
   render(){
+
     const guessCountry = this.state.countries[this.state.randomNumber];
     console.log(guessCountry);
+    this.buildCountryArray(this.state.randomNumber)
+
+    console.log(this.state.gameCountries);
 
     return (
       <div>
         <CountryHeader country={guessCountry}/>
-        <FlagContainer country={}/>
+        <FlagContainer/>
         <ResultContainer/>
       </div>
     );

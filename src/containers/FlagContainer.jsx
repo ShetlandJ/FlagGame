@@ -5,7 +5,7 @@ class FlagContainer extends React.Component {
   render() {
     return(
       <div>
-        <Flag />
+        <Flag image={this}/>
       </div>
     )
   }
